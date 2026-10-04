@@ -39,3 +39,6 @@ The three core value propositions are a scoped two-week pilot, observability and
 
 ### Scroll chapters
 The live interfaces follow a reversible scroll camera: overview → centered agent builder → centered iMessage phone. The desktop journey includes reading pauses, while mobile and reduced-motion users can select chapters directly. This adapts scroll-world's scene progression with live DOM transforms rather than its generated-video pipeline.
+
+### Production deployment
+Live at https://imessageagents.org on Cloudflare Workers static assets. Worker: `imessage-agents-site`; fallback URL: https://imessage-agents-site.team-4b7.workers.dev. Published the production output from code commit `22f96fc` through the Cloudflare dashboard, then attached the root domain. Future updates require a fresh build and deployment; GitHub auto-deploy is not configured. Upload only `dist/client`, not the repository.

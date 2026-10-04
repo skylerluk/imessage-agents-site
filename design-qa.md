@@ -74,4 +74,4 @@ Implementation uses live DOM camera transforms inspired by scroll-world; it does
 
 Removed tilt/perspective from the opening builder and phone, including mobile, and leveled the illustration caption. Removed “Meet Ralley” from hero and metadata. Chapter 02 now reads “Customize your agents” / “Your agents. Your way.” and describes flows, memory, knowledge, and actions. Visually verified both desktop chapters in the local browser. Production build passes. Screenshot: design/qa/customize-agent.png.
 
-Cloudflare deployment is prepared but not published: signed-in account includes imessageagents.org; browser static upload is blocked by extension file permissions. No production or DNS changes have been made.
+Cloudflare deployment completed after browser upload permission was granted. Published build from code commit 22f96fc to Worker imessage-agents-site and connected imessageagents.org. Verified the HTTPS production page, all images loaded, revised hero and customization copy, and both scroll focus scenes. Reply phone center measured at x=640 in a 1280px viewport. No browser console errors. Booking destination remains unset.
