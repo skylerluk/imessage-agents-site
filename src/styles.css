@@ -1870,8 +1870,6 @@ dialog form button {
         calc(var(--agent-focus) * -50%),
         calc(var(--agent-focus) * -50%)
       )
-      perspective(1400px) rotateY(calc(-7deg * (1 - var(--agent-focus))))
-      rotateZ(calc(-3deg * (1 - var(--agent-focus))))
       scale(calc(1 + var(--agent-focus) * 0.28 - var(--reply-focus) * 0.35));
     opacity: calc(1 - var(--reply-focus));
     transition: none;
@@ -1889,7 +1887,6 @@ dialog form button {
         calc(var(--reply-focus) * -50%),
         calc(var(--reply-focus) * -50%)
       )
-      rotate(calc(-3deg * (1 - var(--reply-focus))))
       scale(calc(1 - var(--agent-focus) * (1 - var(--reply-focus)) * 0.18));
     opacity: var(--phone-opacity);
     transition: none;
@@ -1957,5 +1954,16 @@ dialog form button {
   .step-2 .phone-position {
     transform: none;
     margin: 30px auto;
+  }
+}
+
+/* Keep the opening interfaces and their caption level on every screen. */
+.illustrative {
+  transform: none;
+}
+@media (max-width: 760px) {
+  .story-sticky .builder-position,
+  .story-sticky .phone-position {
+    transform: none;
   }
 }

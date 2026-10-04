@@ -19,3 +19,5 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - This is a frontend prototype; do not silently add real message sending, checkout, backend services, or public deployment.
 
 - Scroll feedback: no glowing connector across interfaces. Chapter 02 centers and enlarges the builder; chapter 03 centers the upright phone. Use continuous reversible scroll travel with a readable hold at each scene.
+
+- Keep both interfaces upright and level in chapter 01. Omit “Meet Ralley” from the hero; chapter 02 focuses on customizing agents. Public deployment to imessageagents.org is now explicitly authorized.

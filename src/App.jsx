@@ -429,7 +429,7 @@ export function App() {
                   for your business.
                 </h1>
                 <p>
-                  Meet Ralley. Build and manage AI agents your customers
+                  Build and manage AI agents your customers
                   <br className="desktop-break" /> can talk to in iMessage.
                 </p>
                 <DemoButton />
@@ -437,17 +437,15 @@ export function App() {
               <div className="story-copy" aria-live="polite">
                 <span className="eyebrow">
                   {step === 1
-                    ? "THE AGENT BEHIND THE MESSAGE"
+                    ? "CUSTOMIZE YOUR AGENTS"
                     : "A FAMILIAR WAY TO CONNECT"}
                 </span>
                 <h2>
                   {step === 1 ? (
                     <>
-                      Your knowledge.
+                      Your agents.
                       <br />
-                      <span className="gradient-text">
-                        A more useful reply.
-                      </span>
+                      <span className="gradient-text">Your way.</span>
                     </>
                   ) : (
                     <>
@@ -459,7 +457,7 @@ export function App() {
                 </h2>
                 <p>
                   {step === 1
-                    ? "The right flow, a little memory, and your information. You shape how the conversation works."
+                    ? "Customize your agents’ flows, memory, knowledge, and actions. Shape every conversation around your business."
                     : "A helpful conversation, right where your customers already are."}
                 </p>
               </div>

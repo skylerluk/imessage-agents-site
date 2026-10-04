@@ -68,3 +68,10 @@ User feedback supersedes the original connector treatment: removed the glowing c
 Verified in the browser at 1440×1040 and 1280×800: centered interfaces, unobstructed headings, builder Knowledge dialog, and intermediate scroll values (both interfaces partially visible in transit). Phone center measured at x=720 in the 1440px viewport. Mobile 390×844: Agent chapter isolates the builder with no horizontal overflow. Evidence: design/qa/agent-focus.png and design/qa/reply-focus.png.
 
 Implementation uses live DOM camera transforms inspired by scroll-world; it does not import scroll-world's generated-video pipeline.
+
+
+## Launch copy and alignment revision — passed
+
+Removed tilt/perspective from the opening builder and phone, including mobile, and leveled the illustration caption. Removed “Meet Ralley” from hero and metadata. Chapter 02 now reads “Customize your agents” / “Your agents. Your way.” and describes flows, memory, knowledge, and actions. Visually verified both desktop chapters in the local browser. Production build passes. Screenshot: design/qa/customize-agent.png.
+
+Cloudflare deployment is prepared but not published: signed-in account includes imessageagents.org; browser static upload is blocked by extension file permissions. No production or DNS changes have been made.
