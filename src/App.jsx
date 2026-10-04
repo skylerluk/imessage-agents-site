@@ -267,6 +267,11 @@ function Builder({ step, selected, onSelect, onTest }) {
     </div>
   );
 }
+// Smooth, reversible camera travel with a pause at each focal interface.
+const focusProgress = (value, start, end) => {
+  const t = Math.max(0, Math.min(1, (value - start) / (end - start)));
+  return t * t * (3 - 2 * t);
+};
 export function App() {
   const story = useRef(null),
     dialog = useRef(null);
@@ -287,6 +292,10 @@ export function App() {
         : progress < 0.72
           ? 1
           : 2;
+  const sceneProgress =
+    reduced || compact ? [0, 0.48, 0.88][manualStep] : progress;
+  const agentFocus = focusProgress(sceneProgress, 0.08, 0.36);
+  const replyFocus = focusProgress(sceneProgress, 0.58, 0.84);
   const activeSection = sections.find((s) => s.name === selected);
   useEffect(() => {
     const motion = matchMedia("(prefers-reduced-motion: reduce)"),
@@ -399,7 +408,12 @@ export function App() {
         >
           <div
             className={`story-sticky step-${step}`}
-            style={{ "--progress": reduced || compact ? 0 : progress }}
+            style={{
+              "--progress": sceneProgress,
+              "--agent-focus": agentFocus,
+              "--reply-focus": replyFocus,
+              "--phone-opacity": 1 - agentFocus * (1 - replyFocus),
+            }}
           >
             <img
               className="hero-gradient"
@@ -469,7 +483,7 @@ export function App() {
                   </button>
                 ))}
               </div>
-              <div className="builder-position">
+              <div className="builder-position" inert={replyFocus > 0.8}>
                 <Builder
                   step={step}
                   selected={selected}
@@ -477,12 +491,10 @@ export function App() {
                   onTest={() => setShowTest(true)}
                 />
               </div>
-              <img
-                className="connection-line"
-                src="/assets/connection-line.png"
-                alt=""
-              />
-              <div className="phone-position">
+              <div
+                className="phone-position"
+                aria-hidden={agentFocus === 1 && replyFocus === 0}
+              >
                 <Phone step={step} />
                 <p className="illustrative">Illustrative conversation</p>
               </div>

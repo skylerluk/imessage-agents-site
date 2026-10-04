@@ -59,3 +59,12 @@ No actionable P0, P1, or P2 findings remain for the scoped interactive prototype
 - [x] Primary prototype interactions exercised.
 - [x] Full and focused visual comparison completed after corrections.
 - [x] Booking destination left unset.
+
+
+## Scroll focus revision — passed
+
+User feedback supersedes the original connector treatment: removed the glowing cable. Continuous smoothstep scroll progress now centers and enlarges the desktop for 02 Agent, then centers the upright phone for 03 Reply. Each chapter has a hold interval; scrolling backward reverses the same camera path. Inactive builder controls are inert. Mobile uses direct chapter selection; reduced motion selects scenes without animation.
+
+Verified in the browser at 1440×1040 and 1280×800: centered interfaces, unobstructed headings, builder Knowledge dialog, and intermediate scroll values (both interfaces partially visible in transit). Phone center measured at x=720 in the 1440px viewport. Mobile 390×844: Agent chapter isolates the builder with no horizontal overflow. Evidence: design/qa/agent-focus.png and design/qa/reply-focus.png.
+
+Implementation uses live DOM camera transforms inspired by scroll-world; it does not import scroll-world's generated-video pipeline.

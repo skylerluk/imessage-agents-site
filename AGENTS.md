@@ -17,3 +17,5 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Retain the three approved value props. Avoid infinite-scale, guaranteed revenue, or compliance claims.
 - Booking destination remains unset until the owner supplies it.
 - This is a frontend prototype; do not silently add real message sending, checkout, backend services, or public deployment.
+
+- Scroll feedback: no glowing connector across interfaces. Chapter 02 centers and enlarges the builder; chapter 03 centers the upright phone. Use continuous reversible scroll travel with a readable hold at each scene.

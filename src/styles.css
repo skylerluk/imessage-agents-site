@@ -1728,20 +1728,6 @@ dialog form button {
   }
 }
 
-.connection-line {
-  position: absolute;
-  left: 50%;
-  top: 32%;
-  width: 31%;
-  height: 35%;
-  object-fit: fill;
-  z-index: 4;
-  pointer-events: none;
-  opacity: 0.85;
-  transition:
-    transform 0.9s,
-    opacity 0.9s;
-}
 .step-1 .connection-line {
   transform: translateY(-5px);
   opacity: 1;
@@ -1750,9 +1736,6 @@ dialog form button {
   opacity: 0.5;
 }
 @media (max-width: 760px) {
-  .connection-line {
-    display: none;
-  }
 }
 @media (min-width: 1051px) and (min-height: 821px) {
   .hero-copy h1 {
@@ -1872,10 +1855,107 @@ dialog form button {
   .message-label {
     font-size: 10px;
   }
-  .connection-line {
-    left: 45%;
-    top: 35%;
-    height: 34%;
-    width: 36%;
+}
+
+/* Scroll camera: each interface owns the stage during its chapter. */
+@media (min-width: 761px) {
+  .story {
+    height: calc(100svh + 1800px);
+  }
+  .story-sticky .builder-position {
+    left: calc(14% + var(--agent-focus) * 36% - var(--reply-focus) * 25%);
+    top: calc(46% + var(--agent-focus) * 14%);
+    width: 54%;
+    transform: translate(
+        calc(var(--agent-focus) * -50%),
+        calc(var(--agent-focus) * -50%)
+      )
+      perspective(1400px) rotateY(calc(-7deg * (1 - var(--agent-focus))))
+      rotateZ(calc(-3deg * (1 - var(--agent-focus))))
+      scale(calc(1 + var(--agent-focus) * 0.28 - var(--reply-focus) * 0.35));
+    opacity: calc(1 - var(--reply-focus));
+    transition: none;
+    will-change: transform, opacity;
+  }
+  .story-sticky .phone-position {
+    right: auto;
+    left: calc(
+      72% - var(--reply-focus) * 22% + var(--agent-focus) *
+        (1 - var(--reply-focus)) * 14%
+    );
+    top: calc(9% + var(--reply-focus) * 51%);
+    width: min(28%, calc((100svh - 290px) / 2));
+    transform: translate(
+        calc(var(--reply-focus) * -50%),
+        calc(var(--reply-focus) * -50%)
+      )
+      rotate(calc(-3deg * (1 - var(--reply-focus))))
+      scale(calc(1 - var(--agent-focus) * (1 - var(--reply-focus)) * 0.18));
+    opacity: var(--phone-opacity);
+    transition: none;
+    will-change: transform, opacity;
+  }
+  .story-sticky .story-copy {
+    top: 26px;
+    left: 50%;
+    width: 82%;
+    max-width: 900px;
+    text-align: center;
+    transform: translateX(-50%);
+  }
+  .story-copy h2 {
+    font-size: clamp(30px, 3.6vw, 50px);
+    line-height: 1.12;
+    letter-spacing: -2px;
+    margin: 10px 0;
+  }
+  .story-copy h2 br {
+    display: none;
+  }
+  .story-copy h2 .gradient-text::before {
+    content: " ";
+  }
+  .story-copy p {
+    max-width: 660px;
+    margin: 0 auto;
+    font-size: 14px;
+  }
+  .story-copy .eyebrow {
+    font-size: 10px;
+  }
+  .step-1 .hero-copy,
+  .step-2 .hero-copy {
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .step-1 .phone-position {
+    pointer-events: none;
+  }
+  .step-2 .builder-position {
+    pointer-events: none;
+  }
+  .reduced.story {
+    height: auto;
+  }
+  .reduced .story-sticky {
+    height: calc(100svh - 80px);
+  }
+  .reduced .step-1 .story-copy,
+  .reduced .step-2 .story-copy {
+    display: block;
+  }
+}
+@media (max-width: 760px) {
+  .step-1 .phone-position,
+  .step-2 .builder-position {
+    display: none;
+  }
+  .step-1 .builder-position {
+    margin: 45px auto 65px;
+    transform: none;
+  }
+  .step-2 .phone-position {
+    transform: none;
+    margin: 30px auto;
   }
 }
