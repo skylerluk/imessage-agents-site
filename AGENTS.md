@@ -25,3 +25,5 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - SaaS launch direction: managed pilot, explicit integration support, clear scope/access caveat, and truthful conversion measurement. User supplied Amazon and Amazon Prime logos and confirmed both the relationship and display authorization. Show the production trust strip. Public contact email: team@berkeleystrategygroup.org. The owner approved installing the Cloudflare Workers and Pages GitHub app for skylerluk/imessage-agents-site only.
 
 - Sales homepage update: direct “Build and launch AI agents for iMessage” headline, prominent “Talk to an Expert” CTAs, high-contrast larger navigation, and approved customer logos inside the opening hero before any scrolling. Keep white/violet-blue styling and centered scroll chapters. Deliver this update as a PR and localhost preview.
+
+- Keep hero copy to the direct headline and CTA; omit the explanatory paragraph. Owner supplied and identified Doppel, Allium, and Caldera Care as clients; include their logos alongside Amazon and Amazon Prime in the hero trust strip.

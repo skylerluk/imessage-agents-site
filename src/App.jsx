@@ -446,9 +446,6 @@ export function App() {
                 <h1>
                   Build and launch<br />AI agents for<br /><span className="gradient-text">iMessage.</span>
                 </h1>
-                <p>
-                  Create custom agents that answer questions, support customers, and take action. We handle deployment and integration with your systems.
-                </p>
                 <DemoButton />
                 {SHOW_TRUST_STRIP && (
                   <section
@@ -473,6 +470,9 @@ export function App() {
                         height="418"
                         loading="eager"
                       />
+                      <span className="client-logo doppel-logo"><img src="/assets/doppel.png" alt="Doppel" width="1200" height="630" /></span>
+                      <span className="client-logo allium-logo"><img src="/assets/allium.png" alt="Allium" width="200" height="200" /></span>
+                      <span className="client-logo caldera-logo"><img src="/assets/caldera-care.png" alt="Caldera Care" width="2560" height="598" /></span>
                     </div>
                   </section>
                 )}

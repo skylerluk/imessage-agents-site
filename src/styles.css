@@ -2276,3 +2276,17 @@ footer nav a:hover {
 }
 
 .hero-trust .trust-logos img { filter: grayscale(1) brightness(.25); }
+
+/* Normalize supplied logos with transparent margins without altering source assets. */
+.hero-trust .trust-logos { flex-wrap: wrap; column-gap: 28px; row-gap: 18px; max-width: 510px; }
+.hero-trust .client-logo { position: relative; display: block; flex: 0 0 auto; overflow: hidden; height: 38px; }
+.hero-trust .doppel-logo { width: 142px; }
+.hero-trust .doppel-logo img { position: absolute; width: 198px; max-width: none; height: auto; left: -27px; top: -34px; }
+.hero-trust .allium-logo { width: 115px; }
+.hero-trust .allium-logo img { position: absolute; width: 120px; max-width: none; height: auto; left: -2px; top: -42px; }
+.hero-trust .caldera-logo { width: 166px; height: 46px; }
+.hero-trust .caldera-logo img { position: absolute; width: 195px; max-width: none; height: auto; left: -15px; top: 0; }
+.hero-copy h1 { margin-bottom: 28px; }
+@media (max-width: 760px) {
+  .hero-trust .trust-logos { column-gap: 26px; row-gap: 16px; }
+}
