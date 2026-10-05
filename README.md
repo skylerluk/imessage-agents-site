@@ -18,7 +18,7 @@ npm run build
 npm run test:sites
 ```
 
-The Product Design starter emits the client to `dist/client` and a portable Sites worker to `dist/server`. No public deployment or domain configuration has been performed.
+The Product Design starter emits the client to `dist/client` and a portable Sites worker to `dist/server`. The site is deployed to imessageagents.org through Cloudflare.
 
 ## Experience
 
@@ -26,8 +26,8 @@ The Product Design starter emits the client to `dist/client` and a portable Site
 - Small screens: a normal scrolling layout with explicit step controls. No scroll trapping.
 - Reduced motion: no pinned scroll choreography or animated transitions; use the step controls.
 - Click Flows, Memory, Knowledge, or Actions to inspect a demo configuration.
-- Test Agent opens a scripted local conversation. No real iMessages, orders, integrations, or data collection occur.
-- Book a demo is deliberately disabled while `BOOKING_URL` in `src/App.jsx` is empty. Supply the URL to enable all demo buttons.
+- Test Agent opens a scripted local conversation. No real iMessages or orders are sent by the example. Production demo-link clicks are measured as described below.
+- Book a demo links to the approved Google Calendar booking page.
 
 ## Design
 
@@ -46,10 +46,10 @@ Live at https://imessageagents.org on Cloudflare Workers static assets. Worker: 
 ## Enterprise launch update
 
 - All demo CTAs open the owner’s Google Calendar booking page. Google collects name/email. Company and use-case questions should be added to the calendar’s booking form once the owner confirms its settings; no duplicate form or unsaved lead capture is used.
-- Contact and website privacy pages are HTML entry points in `contact/` and `privacy/`. Contact email is pending; calendar and appointment replies are the current channels.
-- Trust strip is shown in local development. Set `VITE_SHOW_TRUST_STRIP=true` at build time only after the Amazon/Amazon Prime relationship and logo approval are confirmed.
+- Contact and website privacy pages are HTML entry points in `contact/` and `privacy/`. Public contact email: team@berkeleystrategygroup.org. Calendar and appointment replies are also available.
+- The Amazon and Amazon Prime trust strip is enabled for production after the owner confirmed the relationship and logo authorization.
 - `wrangler.jsonc` targets the existing Cloudflare Worker `imessage-agents-site`, serves `dist/client`, and invokes `worker/marketing.js` only for `/api/*`. Existing Sites starter files are preserved.
-- Automatic deployment setup: connect only `skylerluk/imessage-agents-site` in Cloudflare Builds, production branch `main`, build `npm run build && npm test`, deploy `npx wrangler deploy`, root `/`. Disable non-production deployments unless requested. GitHub app installation is awaiting owner authorization. No tokens are stored in this repository.
+- Automatic deployment setup: connect only `skylerluk/imessage-agents-site` in Cloudflare Builds, production branch `main`, build `npm run build && npm test`, deploy `npx wrangler deploy`, root `/`. Disable non-production deployments unless requested. GitHub app installation is owner-authorized; GitHub reauthentication is in progress. No tokens are stored in this repository.
 - GitHub Actions runs build/tests on PRs and main pushes.
 - Cloudflare Web Analytics is already enabled automatically for imessageagents.org (verified in the dashboard). Avoid adding a second beacon.
 - The new conversion endpoint records only `demo_click` and a fixed CTA placement in Cloudflare Workers Logs. View the Worker’s Observability logs and filter the message event `demo_click`; group/count by placement. Logs are a short-term, best-effort measure, not a count of unique people or completed bookings. DNT/GPC signals suppress events. The endpoint rejects cross-origin requests, unexpected events, arbitrary placements, and bodies larger than 256 bytes. Bots can still imitate public clicks.

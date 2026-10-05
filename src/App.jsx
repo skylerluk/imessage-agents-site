@@ -26,8 +26,8 @@ import "@fontsource/inter/latin-600.css";
 import "@fontsource/inter/latin-700.css";
 
 const BOOKING_URL = "https://calendar.app.google/ymqk4oaTwvrGjepc9";
-const SHOW_TRUST_STRIP =
-  import.meta.env.DEV || import.meta.env.VITE_SHOW_TRUST_STRIP === "true";
+// Customer references and logo use confirmed by the owner.
+const SHOW_TRUST_STRIP = true;
 const sections = [
   {
     name: "Flows",

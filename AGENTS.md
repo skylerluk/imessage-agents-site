@@ -22,4 +22,4 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 
 - Keep both interfaces upright and level in chapter 01. Omit “Meet Ralley” from the hero; chapter 02 focuses on customizing agents. Public deployment to imessageagents.org is now explicitly authorized.
 
-- SaaS launch direction: managed pilot, explicit integration support, clear scope/access caveat, and truthful conversion measurement. User supplied Amazon and Amazon Prime logos; relationship and display authorization confirmation is pending. Keep the production trust strip disabled until confirmed.
+- SaaS launch direction: managed pilot, explicit integration support, clear scope/access caveat, and truthful conversion measurement. User supplied Amazon and Amazon Prime logos and confirmed both the relationship and display authorization. Show the production trust strip. Public contact email: team@berkeleystrategygroup.org. The owner approved installing the Cloudflare Workers and Pages GitHub app for skylerluk/imessage-agents-site only.
