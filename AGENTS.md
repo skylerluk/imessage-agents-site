@@ -15,9 +15,11 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Follow `design/approved-design.png`: white background, bespoke violet-blue grain-textured gradient, iMessage phone plus interactive builder, and a three-stage scroll story.
 - Use fictional John's Pizza Shop. Do not include AARP or imply DoorDash is a customer.
 - Retain the three approved value props. Avoid infinite-scale, guaranteed revenue, or compliance claims.
-- Booking destination remains unset until the owner supplies it.
+- Booking destination: https://calendar.app.google/ymqk4oaTwvrGjepc9. Use accessible links for every demo CTA.
 - This is a frontend prototype; do not silently add real message sending, checkout, backend services, or public deployment.
 
 - Scroll feedback: no glowing connector across interfaces. Chapter 02 centers and enlarges the builder; chapter 03 centers the upright phone. Use continuous reversible scroll travel with a readable hold at each scene.
 
 - Keep both interfaces upright and level in chapter 01. Omit “Meet Ralley” from the hero; chapter 02 focuses on customizing agents. Public deployment to imessageagents.org is now explicitly authorized.
+
+- SaaS launch direction: managed pilot, explicit integration support, clear scope/access caveat, and truthful conversion measurement. User supplied Amazon and Amazon Prime logos; relationship and display authorization confirmation is pending. Keep the production trust strip disabled until confirmed.

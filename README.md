@@ -42,3 +42,17 @@ The live interfaces follow a reversible scroll camera: overview → centered age
 
 ### Production deployment
 Live at https://imessageagents.org on Cloudflare Workers static assets. Worker: `imessage-agents-site`; fallback URL: https://imessage-agents-site.team-4b7.workers.dev. Published the production output from code commit `22f96fc` through the Cloudflare dashboard, then attached the root domain. Future updates require a fresh build and deployment; GitHub auto-deploy is not configured. Upload only `dist/client`, not the repository.
+
+## Enterprise launch update
+
+- All demo CTAs open the owner’s Google Calendar booking page. Google collects name/email. Company and use-case questions should be added to the calendar’s booking form once the owner confirms its settings; no duplicate form or unsaved lead capture is used.
+- Contact and website privacy pages are HTML entry points in `contact/` and `privacy/`. Contact email is pending; calendar and appointment replies are the current channels.
+- Trust strip is shown in local development. Set `VITE_SHOW_TRUST_STRIP=true` at build time only after the Amazon/Amazon Prime relationship and logo approval are confirmed.
+- `wrangler.jsonc` targets the existing Cloudflare Worker `imessage-agents-site`, serves `dist/client`, and invokes `worker/marketing.js` only for `/api/*`. Existing Sites starter files are preserved.
+- Automatic deployment setup: connect only `skylerluk/imessage-agents-site` in Cloudflare Builds, production branch `main`, build `npm run build && npm test`, deploy `npx wrangler deploy`, root `/`. Disable non-production deployments unless requested. GitHub app installation is awaiting owner authorization. No tokens are stored in this repository.
+- GitHub Actions runs build/tests on PRs and main pushes.
+- Cloudflare Web Analytics is already enabled automatically for imessageagents.org (verified in the dashboard). Avoid adding a second beacon.
+- The new conversion endpoint records only `demo_click` and a fixed CTA placement in Cloudflare Workers Logs. View the Worker’s Observability logs and filter the message event `demo_click`; group/count by placement. Logs are a short-term, best-effort measure, not a count of unique people or completed bookings. DNT/GPC signals suppress events. The endpoint rejects cross-origin requests, unexpected events, arbitrary placements, and bodies larger than 256 bytes. Bots can still imitate public clicks.
+- Confirmed appointments remain in Google Calendar; do not label clicks as bookings.
+- Deploy using `npm run deploy` with authorized Cloudflare access, or the configured Cloudflare Builds workflow. Static ZIP upload alone will not deploy the new event endpoint.
+- Social card source: `design/social-card.html`; exported 1200×630 PNG: `public/assets/social-preview.png`.

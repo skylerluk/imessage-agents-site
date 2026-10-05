@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://imessageagents.org/sitemap.xml

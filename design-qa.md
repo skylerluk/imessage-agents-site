@@ -75,3 +75,21 @@ Implementation uses live DOM camera transforms inspired by scroll-world; it does
 Removed tilt/perspective from the opening builder and phone, including mobile, and leveled the illustration caption. Removed “Meet Ralley” from hero and metadata. Chapter 02 now reads “Customize your agents” / “Your agents. Your way.” and describes flows, memory, knowledge, and actions. Visually verified both desktop chapters in the local browser. Production build passes. Screenshot: design/qa/customize-agent.png.
 
 Cloudflare deployment completed after browser upload permission was granted. Published build from code commit 22f96fc to Worker imessage-agents-site and connected imessageagents.org. Verified the HTTPS production page, all images loaded, revised hero and customization copy, and both scroll focus scenes. Reply phone center measured at x=640 in a 1280px viewport. No browser console errors. Booking destination remains unset.
+
+
+## Enterprise launch update — 2026-10-04
+
+Source visual truth: current approved production page, captured in `design/qa/saas-before.png`. Implementation: `design/qa/saas-after.png`; both 1280×720 CSS pixels and PNG pixels (1×). Full-view comparison source: `design/saas-comparison.html`; screenshots compared side by side. Initial comparison used differing viewport sizes and was replaced with normalized captures. Additional evidence: `design/qa/saas-mobile.png`, `saas-trust-mobile.png` at 390×844, and `saas-pilot.png`.
+
+Typography: original Inter weights and hero hierarchy retained; longer approved positioning wraps without overflow. Layout rhythm: original centered scroll sequence retained, new trust strip and two-column pilot follow section widths; mobile stacks into one column. Colors: white/violet/blue art direction preserved. Assets: original gradient/device assets unchanged; supplied Amazon logos used directly with contain sizing. Copy: owner-requested CTA and managed-pilot messaging implemented; logo claim remains gated for production pending confirmation. New standalone pages use a system sans-serif and a restrained version of the same palette. This is an intentional simplification.
+
+Findings and fixes:
+- P1 contact/privacy dev routes initially fell back to the home page. Converted to explicit Vite HTML entry points; both now render correctly in local Worker production mode.
+- P2 short-desktop phone contents overflowed the frame at 1200×630. Scaled phone UI with container units and adjusted short-screen builder spacing; verified composer remains inside frame.
+- Final side-by-side comparison preserves the source’s principal geometry and assets; new copy/navigation and proportional phone text are intentional changes. No remaining P0/P1/P2 visual issues found.
+
+Interaction checks: mobile chapters and navigation, booking URL resolves to Enterprise Message Agents Demo, actual contact CTA navigation generated HTTP 204 from the local event endpoint and one `demo_click` with placement `contact`; no appointment was booked. Contact/privacy routes and metadata render in the built app. Build and eight tests pass. Cloudflare dry run accepts the Worker configuration. Cloudflare traffic analytics is already active, verified in dashboard.
+
+Release status: not published. Cloudflare GitHub app authorization is staged for only skylerluk/imessage-agents-site and awaiting confirmation. Amazon relationship/logo approval and business contact email remain pending. Google’s booking form currently collects name/email; company/use-case fields and calendar branding need owner input. Conversion code is verified locally; production log delivery is pending deployment.
+
+final result: passed

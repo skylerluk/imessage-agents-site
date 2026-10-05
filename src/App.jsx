@@ -25,8 +25,9 @@ import "@fontsource/inter/latin-500.css";
 import "@fontsource/inter/latin-600.css";
 import "@fontsource/inter/latin-700.css";
 
-// Deliberately unset until the owner provides a booking destination.
-const BOOKING_URL = "";
+const BOOKING_URL = "https://calendar.app.google/ymqk4oaTwvrGjepc9";
+const SHOW_TRUST_STRIP =
+  import.meta.env.DEV || import.meta.env.VITE_SHOW_TRUST_STRIP === "true";
 const sections = [
   {
     name: "Flows",
@@ -79,18 +80,36 @@ const benefits = [
     "We handle deployment and integration, tailored to your technical requirements.",
   ],
 ];
-function DemoButton({ small = false }) {
+function DemoButton({
+  small = false,
+  label = "Book a demo",
+  placement = "hero",
+}) {
   return (
-    <button
+    <a
       className={`button ${small ? "button-small" : ""}`}
-      aria-disabled={!BOOKING_URL}
-      title={!BOOKING_URL ? "Demo booking will be available soon." : undefined}
+      href={BOOKING_URL}
       onClick={() => {
-        if (BOOKING_URL) window.location.assign(BOOKING_URL);
+        // Measurement must never interrupt the booking link.
+        if (
+          import.meta.env.DEV ||
+          navigator.globalPrivacyControl ||
+          navigator.doNotTrack === "1"
+        )
+          return;
+        try {
+          navigator.sendBeacon?.(
+            "/api/events",
+            JSON.stringify({ event: "demo_click", placement }),
+          );
+        } catch {
+          /* The calendar link remains usable when telemetry is blocked. */
+        }
       }}
     >
-      Book a demo{!small && <ArrowRight size={19} aria-hidden="true" />}
-    </button>
+      {label}
+      {!small && <ArrowRight size={19} aria-hidden="true" />}
+    </a>
   );
 }
 function Phone({ step }) {
@@ -385,7 +404,8 @@ export function App() {
             Enterprise Message Agents
           </a>
           <nav aria-label="Main navigation">
-            <a href="#product">Product</a>
+            <a href="#product">Why us</a>
+            <a href="#pilot">Your pilot</a>
             <a
               href="#how-it-works"
               onClick={(e) => {
@@ -396,7 +416,7 @@ export function App() {
               How it works
             </a>
           </nav>
-          <DemoButton small />
+          <DemoButton small placement="header" />
         </div>
       </header>
       <main id="top">
@@ -429,8 +449,9 @@ export function App() {
                   for your business.
                 </h1>
                 <p>
-                  Build and manage AI agents your customers
-                  <br className="desktop-break" /> can talk to in iMessage.
+                  Launch AI agents your customers can talk to in iMessage.
+                  <br className="desktop-break" /> We handle deployment and
+                  integrations. You control the experience.
                 </p>
                 <DemoButton />
               </div>
@@ -516,6 +537,32 @@ export function App() {
             </div>
           </div>
         </section>
+        {SHOW_TRUST_STRIP && (
+          <section
+            className="trust-strip section-shell"
+            aria-label="Trusted by teams at"
+          >
+            <p>Trusted by teams at</p>
+            <div className="trust-logos">
+              <img
+                className="amazon-logo"
+                src="/assets/amazon.png"
+                alt="Amazon"
+                width="780"
+                height="320"
+                loading="lazy"
+              />
+              <img
+                className="prime-logo"
+                src="/assets/amazon-prime.png"
+                alt="Amazon Prime"
+                width="2160"
+                height="418"
+                loading="lazy"
+              />
+            </div>
+          </section>
+        )}
         <section id="product" className="benefits section-shell">
           <div className="section-heading">
             <span className="eyebrow">BUILT FOR YOUR BUSINESS</span>
@@ -538,6 +585,79 @@ export function App() {
             ))}
           </div>
         </section>
+        <section
+          id="pilot"
+          className="pilot section-shell"
+          aria-labelledby="pilot-title"
+        >
+          <div className="pilot-intro">
+            <span className="eyebrow">YOUR FIRST TWO WEEKS</span>
+            <h2 id="pilot-title">
+              Start with one use case.
+              <br />
+              <span className="gradient-text">Build from there.</span>
+            </h2>
+            <p>
+              A focused, managed pilot. Your team brings the business context.
+              We handle the build and deployment, together with your technical
+              team.
+            </p>
+            <DemoButton label="Discuss your pilot" placement="pilot" />
+            <small>
+              Two-week target starts once scope and required access are agreed.
+              Channel approvals and complex integrations may take longer.
+            </small>
+          </div>
+          <div className="pilot-plan">
+            <article>
+              <span className="pilot-day">01 / DEFINE</span>
+              <h3>Agree on the right first conversation.</h3>
+              <p>
+                Choose one customer journey, map the required data and systems,
+                and agree on how we’ll measure success.
+              </p>
+            </article>
+            <article>
+              <span className="pilot-day">02 / BUILD & TEST</span>
+              <h3>Make it work for your business.</h3>
+              <p>
+                Configure your agent’s flows, knowledge, and actions. Connect
+                the agreed systems and test real scenarios with your team.
+              </p>
+            </article>
+            <article>
+              <span className="pilot-day">03 / LAUNCH & LEARN</span>
+              <h3>Put a focused pilot in customers’ hands.</h3>
+              <p>
+                Launch to an agreed audience, review conversations and results,
+                and prioritize what to improve next.
+              </p>
+            </article>
+          </div>
+          <div className="pilot-details">
+            <div>
+              <h3>What we need from you</h3>
+              <p>
+                A business owner, a technical contact, your source information,
+                and access to the systems included in the pilot.
+              </p>
+            </div>
+            <div>
+              <h3>What success can look like</h3>
+              <p>
+                Completed customer tasks, qualified leads, conversion, or time
+                saved. We choose the measures together before launch.
+              </p>
+            </div>
+            <div>
+              <h3>A clear scope before you commit</h3>
+              <p>
+                We agree on deliverables, pricing, launch dependencies, and the
+                next-step decision before the pilot begins.
+              </p>
+            </div>
+          </div>
+        </section>
         <section className="closing section-shell">
           <div>
             <span className="eyebrow">INTRODUCING RALLEY</span>
@@ -547,14 +667,17 @@ export function App() {
               in their next message.
             </h2>
           </div>
-          <DemoButton />
+          <DemoButton placement="closing" />
         </section>
       </main>
       <footer className="section-shell">
         <a className="footer-brand" href="#top">
           Enterprise Message Agents
         </a>
-        <span>Ralley · Your business, in the conversation.</span>
+        <nav aria-label="Footer">
+          <a href="/contact/">Contact</a>
+          <a href="/privacy/">Privacy</a>
+        </nav>
         <small>© {new Date().getFullYear()} Enterprise Message Agents</small>
       </footer>
       <dialog
