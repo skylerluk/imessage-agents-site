@@ -65,24 +65,24 @@ const sections = [
       "Connect the conversation to the tools and workflows your business uses.",
   },
 ];
-const steps = ["Message", "Agent", "Reply"];
+const steps = ["Message", "Customize", "Connect"];
 const benefits = [
   [
     "Live pilot in two weeks.",
     "Move from idea to a working iMessage pilot without months of in-house setup.",
   ],
   [
-    "See what works. Improve it.",
+    "Measure and improve.",
     "Use observability and A/B testing to uncover revenue opportunities and improve your agent.",
   ],
   [
-    "Built to fit your systems.",
+    "Integrate with your systems.",
     "We handle deployment and integration, tailored to your technical requirements.",
   ],
 ];
 function DemoButton({
   small = false,
-  label = "Book a demo",
+  label = "Talk to an Expert",
   placement = "hero",
 }) {
   return (
@@ -404,7 +404,7 @@ export function App() {
             Enterprise Message Agents
           </a>
           <nav aria-label="Main navigation">
-            <a href="#product">Why us</a>
+            <a href="#product">Platform</a>
             <a href="#pilot">Your pilot</a>
             <a
               href="#how-it-works"
@@ -444,16 +444,39 @@ export function App() {
             <div className="scene-content">
               <div className="hero-copy">
                 <h1>
-                  A new <span className="gradient-text">front door</span>
-                  <br />
-                  for your business.
+                  Build and launch<br />AI agents for<br /><span className="gradient-text">iMessage.</span>
                 </h1>
                 <p>
-                  Launch AI agents your customers can talk to in iMessage.
-                  <br className="desktop-break" /> We handle deployment and
-                  integrations. You control the experience.
+                  Create custom agents that answer questions, support customers, and take action. We handle deployment and integration with your systems.
                 </p>
                 <DemoButton />
+                {SHOW_TRUST_STRIP && (
+                  <section
+                    className="trust-strip hero-trust"
+                    aria-label="Trusted by teams at"
+                  >
+                    <p>Trusted by teams at</p>
+                    <div className="trust-logos">
+                      <img
+                        className="amazon-logo"
+                        src="/assets/amazon.png"
+                        alt="Amazon"
+                        width="780"
+                        height="320"
+                        loading="eager"
+                      />
+                      <img
+                        className="prime-logo"
+                        src="/assets/amazon-prime.png"
+                        alt="Amazon Prime"
+                        width="2160"
+                        height="418"
+                        loading="eager"
+                      />
+                    </div>
+                  </section>
+                )}
+
               </div>
               <div className="story-copy" aria-live="polite">
                 <span className="eyebrow">
@@ -528,7 +551,7 @@ export function App() {
                     </>
                   ) : (
                     <>
-                      Explore {steps[step + 1].toLowerCase()}{" "}
+                      {step === 0 ? "Customize your agent" : "See the conversation"}{" "}
                       <ArrowRight size={13} />
                     </>
                   )}
@@ -537,32 +560,6 @@ export function App() {
             </div>
           </div>
         </section>
-        {SHOW_TRUST_STRIP && (
-          <section
-            className="trust-strip section-shell"
-            aria-label="Trusted by teams at"
-          >
-            <p>Trusted by teams at</p>
-            <div className="trust-logos">
-              <img
-                className="amazon-logo"
-                src="/assets/amazon.png"
-                alt="Amazon"
-                width="780"
-                height="320"
-                loading="lazy"
-              />
-              <img
-                className="prime-logo"
-                src="/assets/amazon-prime.png"
-                alt="Amazon Prime"
-                width="2160"
-                height="418"
-                loading="lazy"
-              />
-            </div>
-          </section>
-        )}
         <section id="product" className="benefits section-shell">
           <div className="section-heading">
             <span className="eyebrow">BUILT FOR YOUR BUSINESS</span>
@@ -602,7 +599,7 @@ export function App() {
               We handle the build and deployment, together with your technical
               team.
             </p>
-            <DemoButton label="Discuss your pilot" placement="pilot" />
+            <DemoButton label="Talk to an Expert" placement="pilot" />
             <small>
               Two-week target starts once scope and required access are agreed.
               Channel approvals and complex integrations may take longer.

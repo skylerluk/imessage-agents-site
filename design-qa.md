@@ -93,3 +93,11 @@ Interaction checks: mobile chapters and navigation, booking URL resolves to Ente
 Release status: not published. Cloudflare GitHub app authorization is staged for only skylerluk/imessage-agents-site and awaiting confirmation. Amazon relationship/logo approval and business contact email remain pending. Google’s booking form currently collects name/email; company/use-case fields and calendar branding need owner input. Conversion code is verified locally; production log delivery is pending deployment.
 
 final result: passed
+
+## Sales hero PR verification
+
+- Direct iMessage headline, larger expert CTA, and high-contrast navigation implemented.
+- Customer logos visible in the opening viewport at 1280×720 and 390×844; mobile has no horizontal overflow.
+- Chapter 02 centers the builder and chapter 03 centers the phone.
+- Booking URL retained; all existing 8 tests and production build pass.
+- Browser console reports no errors. Evidence: `design/qa/sales-hero-desktop.png` and `design/qa/sales-hero-mobile.png`.
