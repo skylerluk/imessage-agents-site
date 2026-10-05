@@ -27,3 +27,5 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Sales homepage update: direct “Build and launch AI agents for iMessage” headline, prominent “Talk to an Expert” CTAs, high-contrast larger navigation, and approved customer logos inside the opening hero before any scrolling. Keep white/violet-blue styling and centered scroll chapters. Deliver this update as a PR and localhost preview.
 
 - Keep hero copy to the direct headline and CTA; omit the explanatory paragraph. Owner supplied and identified Doppel, Allium, and Caldera Care as clients; include their logos alongside Amazon and Amazon Prime in the hero trust strip.
+
+- Desktop headline should use a smaller, wider two-line composition reaching toward center. Chapters 02 and 03 need larger, darker supporting descriptions for readability.

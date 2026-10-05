@@ -444,7 +444,8 @@ export function App() {
             <div className="scene-content">
               <div className="hero-copy">
                 <h1>
-                  Build and launch<br />AI agents for<br /><span className="gradient-text">iMessage.</span>
+                  Build and launch<br />
+                  AI agents for <span className="gradient-text hero-channel">iMessage.</span>
                 </h1>
                 <DemoButton />
                 {SHOW_TRUST_STRIP && (
