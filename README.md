@@ -41,7 +41,7 @@ The three core value propositions are a scoped two-week pilot, observability and
 The live interfaces follow a reversible scroll camera: overview → centered agent builder → centered iMessage phone. The desktop journey includes reading pauses, while mobile and reduced-motion users can select chapters directly. This adapts scroll-world's scene progression with live DOM transforms rather than its generated-video pipeline.
 
 ### Production deployment
-Live at https://imessageagents.org on Cloudflare Workers static assets. Worker: `imessage-agents-site`; fallback URL: https://imessage-agents-site.team-4b7.workers.dev. Published the production output from code commit `22f96fc` through the Cloudflare dashboard, then attached the root domain. Future updates require a fresh build and deployment; GitHub auto-deploy is not configured. Upload only `dist/client`, not the repository.
+Live at https://imessageagents.org on Cloudflare Workers static assets. Worker: `imessage-agents-site`; fallback URL: https://imessage-agents-site.team-4b7.workers.dev. Published the production output from code commit `22f96fc` through the Cloudflare dashboard, then attached the root domain. Cloudflare Builds is now connected to the GitHub repository; pushes to main automatically build, test, and deploy the complete Worker and assets.
 
 ## Enterprise launch update
 
@@ -49,7 +49,7 @@ Live at https://imessageagents.org on Cloudflare Workers static assets. Worker: 
 - Contact and website privacy pages are HTML entry points in `contact/` and `privacy/`. Public contact email: team@berkeleystrategygroup.org. Calendar and appointment replies are also available.
 - The Amazon and Amazon Prime trust strip is enabled for production after the owner confirmed the relationship and logo authorization.
 - `wrangler.jsonc` targets the existing Cloudflare Worker `imessage-agents-site`, serves `dist/client`, and invokes `worker/marketing.js` only for `/api/*`. Existing Sites starter files are preserved.
-- Automatic deployment setup: connect only `skylerluk/imessage-agents-site` in Cloudflare Builds, production branch `main`, build `npm run build && npm test`, deploy `npx wrangler deploy`, root `/`. Disable non-production deployments unless requested. GitHub app installation is owner-authorized; GitHub reauthentication is in progress. No tokens are stored in this repository.
+- Automatic deployment setup: connect only `skylerluk/imessage-agents-site` in Cloudflare Builds, production branch `main`, build `npm run build && npm test`, deploy `npx wrangler deploy`, root `/`. Disable non-production deployments unless requested. The GitHub app is connected for this repository only, and the owner-approved Cloudflare Builds token is configured. No tokens are stored in this repository.
 - GitHub Actions runs build/tests on PRs and main pushes.
 - Cloudflare Web Analytics is already enabled automatically for imessageagents.org (verified in the dashboard). Avoid adding a second beacon.
 - The new conversion endpoint records only `demo_click` and a fixed CTA placement in Cloudflare Workers Logs. View the Worker’s Observability logs and filter the message event `demo_click`; group/count by placement. Logs are a short-term, best-effort measure, not a count of unique people or completed bookings. DNT/GPC signals suppress events. The endpoint rejects cross-origin requests, unexpected events, arbitrary placements, and bodies larger than 256 bytes. Bots can still imitate public clicks.
